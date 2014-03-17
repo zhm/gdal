@@ -679,7 +679,7 @@ CPLString OGRPGDumpEscapeString(
     /*  PG_HAS_PQESCAPESTRINGCONN is added by a test in 'configure'         */
     /*  so it is not set by default when building OGR for Win32             */
     /* -------------------------------------------------------------------- */
-#if defined(PG_HAS_PQESCAPESTRINGCONN)
+#if 0 && defined(PG_HAS_PQESCAPESTRINGCONN)
     int nError;
     PQescapeStringConn (hPGConn, pszDestStr, pszStrValue, nSrcLen, &nError);
     if (nError == 0)
