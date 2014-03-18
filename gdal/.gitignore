@@ -23,8 +23,6 @@ cpl_config.h
 *.la
 .libs
 *.pyc
-frmts/jpeg/libjpeg12/*.c
-frmts/jpeg/libjpeg12/*.h
 libgdal.a
 libgdal.so
 libgdal.so.*
