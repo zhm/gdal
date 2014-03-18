@@ -189,6 +189,7 @@ static void EXIFPrintData(char* pszData, GUInt16 type,
 }
 
 
+#pragma optimize("", off)
 /************************************************************************/
 /*                        EXIFExtractMetadata()                         */
 /*                                                                      */
@@ -216,7 +217,6 @@ CPLErr EXIFExtractMetadata(char**& papszMetadata,
 /* -------------------------------------------------------------------- */
 /*      Read number of entry in directory                               */
 /* -------------------------------------------------------------------- */
-    #pragma optimize("", off)
     if( VSIFSeekL(fp, nOffset+nTIFFHEADER, SEEK_SET) != 0
         || VSIFReadL(&nEntryCount,1,sizeof(GUInt16),fp) != sizeof(GUInt16) )
     {
@@ -225,7 +225,6 @@ CPLErr EXIFExtractMetadata(char**& papszMetadata,
                   nOffset + nTIFFHEADER );
         return CE_Failure;
     }
-    #pragma optimize("", on)
 
     if (bSwabflag)
         TIFFSwabShort(&nEntryCount);
@@ -456,3 +455,4 @@ CPLErr EXIFExtractMetadata(char**& papszMetadata,
 
     return CE_None;
 }
+#pragma optimize("", on)
