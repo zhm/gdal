@@ -188,8 +188,13 @@ static void EXIFPrintData(char* pszData, GUInt16 type,
   }
 }
 
-
+// C1001: An internal error has occurred in the compiler. (compiler file 'f:\dd\vctools\compiler\utc\src\p2\main.c', line 227)
+// https://connect.microsoft.com/VisualStudio/feedback/details/800094/
+// http://connect.microsoft.com/VisualStudio/feedback/details/800086/fatal-error-c1001-an-internal-error-has-occurred-in-the-compiler-when-linking-large-exe
+// http://connect.microsoft.com/VisualStudio/feedback/details/800078/internal-error-in-f-dd-vctools-compiler-utc-src-p2-main-c-line-211
+#ifdef _MSC_VER
 #pragma optimize("", off)
+#endif
 /************************************************************************/
 /*                        EXIFExtractMetadata()                         */
 /*                                                                      */
@@ -455,4 +460,6 @@ CPLErr EXIFExtractMetadata(char**& papszMetadata,
 
     return CE_None;
 }
+#ifdef _MSC_VER
 #pragma optimize("", on)
+#endif
